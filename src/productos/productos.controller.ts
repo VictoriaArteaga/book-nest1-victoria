@@ -106,4 +106,11 @@ export class ProductosController {
         const productsWithoutStock = this.products.filter(product => product.stock === 0);
         return productsWithoutStock;
     }
+
+    // D. Listar los productos vencidos.
+    @Get("search/expired")
+    getExpiredProducts() {
+        const expiredProducts = this.products.filter( product => product.state === false);
+        return expiredProducts;
+    }
 }
