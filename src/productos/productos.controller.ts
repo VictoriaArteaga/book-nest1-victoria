@@ -99,4 +99,11 @@ export class ProductosController {
         const product = this.products.find(product => product.id === id);
         return product;
     }
+
+    // C. Listar productos sin Stock.
+    @Get("search/sin-stock")
+    getProductsWithoutStock() {
+        const productsWhithoutStock = this.products.filter(product => product.stock === 0);
+        return productsWhithoutStock;
+    }
 }
