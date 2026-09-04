@@ -5,6 +5,7 @@ interface Products {
     state: boolean;
     category: string;
     stock: number;
+    price: number;
 }
 
 
@@ -16,69 +17,82 @@ export class ProductosController {
             id: "1", 
             state: true, 
             category: "Electrónica", 
-            stock: 25 
+            stock: 25,
+            price: 120.00
         },
         { 
             id: "2", 
             state: true, 
             category: "Ropa", 
-            stock: 50 
+            stock: 50,
+            price: 35.50
         },
         { 
             id: "3", 
             state: false, 
             category: "Hogar", 
-            stock: 0 
+            stock: 0,
+            price: 89.99
         },
         { 
             id: "4", 
             state: true, 
             category: "Electrónica", 
-            stock: 12 
+            stock: 12,
+            price: 450.00 
         },
         { 
             id: "5", 
             state: true, 
             category: "Deportes", 
-            stock: 30 
+            stock: 30,
+            price: 65.00
         },
         { 
             id: "6", 
             state: false, 
             category: "Libros", 
-            stock: 0 
+            stock: 0,
+            price: 18.25
         },
         { 
             id: "7", 
             state: true, 
             category: "Hogar", 
-            stock: 18 
+            stock: 18,
+            price: 140.00
         },
         { 
             id: "8", 
             state: true, 
             category: "Alimentos", 
-            stock: 100 
+            stock: 100,
+            price: 8.50
         },
         { 
             id: "9", 
             state: true, 
             category: "Ropa", 
-            stock: 5 
+            stock: 5,
+            price: 95.00
         },
         { 
             id: "10", 
             state: false, 
             category: "Deportes", 
-            stock: 0 
+            stock: 0,
+            price: 210.00
         }
     ]
+
+    // A. Listar los productos.
 
     @Get("")
     getAllProducts() {
         return this.products;
     }
 
+    // B. Listar producto por su ID.
     @Get(":id")
     getProduct(@Param("id") id: string) {
 
