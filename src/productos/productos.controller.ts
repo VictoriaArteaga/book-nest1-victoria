@@ -2,6 +2,7 @@ import { Controller, Get, Param } from '@nestjs/common';
 
 interface Products {
     id: string;
+    name: string;
     state: boolean;
     category: string;
     stock: number;
@@ -15,27 +16,31 @@ export class ProductosController {
     private products: Products[] = [
         { 
             id: "1", 
+            name: "Leche",
             state: true, 
-            category: "Electrónica", 
+            category: "Lacteos", 
             stock: 25,
             price: 120.00
         },
         { 
             id: "2", 
+            name: "Zanahoria",
             state: true, 
-            category: "Ropa", 
+            category: "Verduras", 
             stock: 50,
             price: 35.50
         },
         { 
             id: "3", 
+            name: "Carne de res",
             state: false, 
-            category: "Hogar", 
+            category: "Carnes", 
             stock: 0,
             price: 89.99
         },
         { 
             id: "4", 
+            name: "Laptop",
             state: true, 
             category: "Electrónica", 
             stock: 12,
@@ -43,6 +48,7 @@ export class ProductosController {
         },
         { 
             id: "5", 
+            name: "Balón de fútbol",
             state: true, 
             category: "Deportes", 
             stock: 30,
@@ -50,13 +56,15 @@ export class ProductosController {
         },
         { 
             id: "6", 
+            name: "Chocolate",
             state: false, 
-            category: "Libros", 
+            category: "Dulces", 
             stock: 0,
             price: 18.25
         },
         { 
             id: "7", 
+            name: "Aspiradora",
             state: true, 
             category: "Hogar", 
             stock: 18,
@@ -64,13 +72,15 @@ export class ProductosController {
         },
         { 
             id: "8", 
-            state: true, 
-            category: "Alimentos", 
+            name: "Lentejas",
+            state: false, 
+            category: "Legumbres", 
             stock: 100,
             price: 8.50
         },
         { 
             id: "9", 
+            name: "Chaqueta",
             state: true, 
             category: "Ropa", 
             stock: 5,
@@ -78,7 +88,8 @@ export class ProductosController {
         },
         { 
             id: "10", 
-            state: false, 
+            name: "Bicicleta",
+            state: true, 
             category: "Deportes", 
             stock: 0,
             price: 210.00
