@@ -101,9 +101,9 @@ export class ProductosController {
     }
 
     // C. Listar productos sin Stock.
-    @Get("search/sin-stock")
+    @Get("search/without-stock")
     getProductsWithoutStock() {
-        const productsWhithoutStock = this.products.filter(product => product.stock === 0);
-        return productsWhithoutStock;
+        const productsWithoutStock = this.products.filter(product => product.stock === 0);
+        return productsWithoutStock;
     }
 }
