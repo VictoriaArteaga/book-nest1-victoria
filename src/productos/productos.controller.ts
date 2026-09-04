@@ -99,6 +99,4 @@ export class ProductosController {
         const product = this.products.find(product => product.id === id);
         return product;
     }
-
-    
 }
