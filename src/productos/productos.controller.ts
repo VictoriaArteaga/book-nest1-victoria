@@ -1,6 +1,6 @@
 import { Controller, Get, Param } from '@nestjs/common';
 
-interface Products {
+interface Product {
     id: string;
     name: string;
     expired: boolean;
@@ -13,7 +13,7 @@ interface Products {
 @Controller('products')
 export class ProductosController {
 
-    private products: Products[] = [
+    private products: Product[] = [
         { 
             id: "1", 
             name: "Leche",
