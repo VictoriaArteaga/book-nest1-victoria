@@ -3,7 +3,7 @@ import { Controller, Get, Param } from '@nestjs/common';
 interface Products {
     id: string;
     name: string;
-    state: boolean;
+    expired: boolean;
     category: string;
     stock: number;
     price: number;
@@ -17,7 +17,7 @@ export class ProductosController {
         { 
             id: "1", 
             name: "Leche",
-            state: true, 
+            expired: false,
             category: "Lacteos", 
             stock: 25,
             price: 120.00
@@ -25,7 +25,7 @@ export class ProductosController {
         { 
             id: "2", 
             name: "Zanahoria",
-            state: true, 
+            expired: false,
             category: "Verduras", 
             stock: 50,
             price: 35.50
@@ -33,7 +33,7 @@ export class ProductosController {
         { 
             id: "3", 
             name: "Carne de res",
-            state: false, 
+            expired: true, 
             category: "Carnes", 
             stock: 0,
             price: 89.99
@@ -41,7 +41,7 @@ export class ProductosController {
         { 
             id: "4", 
             name: "Laptop",
-            state: true, 
+            expired: false, 
             category: "Electrónica", 
             stock: 12,
             price: 450.00 
@@ -49,7 +49,7 @@ export class ProductosController {
         { 
             id: "5", 
             name: "Balón de fútbol",
-            state: true, 
+            expired: true, 
             category: "Deportes", 
             stock: 30,
             price: 65.00
@@ -57,7 +57,7 @@ export class ProductosController {
         { 
             id: "6", 
             name: "Chocolate",
-            state: false, 
+            expired: false, 
             category: "Dulces", 
             stock: 0,
             price: 18.25
@@ -65,7 +65,7 @@ export class ProductosController {
         { 
             id: "7", 
             name: "Aspiradora",
-            state: true, 
+            expired: true, 
             category: "Hogar", 
             stock: 18,
             price: 140.00
@@ -73,7 +73,7 @@ export class ProductosController {
         { 
             id: "8", 
             name: "Lentejas",
-            state: false, 
+            expired: false, 
             category: "Legumbres", 
             stock: 100,
             price: 8.50
@@ -81,7 +81,7 @@ export class ProductosController {
         { 
             id: "9", 
             name: "Chaqueta",
-            state: true, 
+            expired: true, 
             category: "Ropa", 
             stock: 5,
             price: 95.00
@@ -89,7 +89,7 @@ export class ProductosController {
         { 
             id: "10", 
             name: "Bicicleta",
-            state: true, 
+            expired: true, 
             category: "Deportes", 
             stock: 0,
             price: 210.00
@@ -121,7 +121,7 @@ export class ProductosController {
     // D. Listar los productos vencidos.
     @Get("search/expired")
     getExpiredProducts() {
-        const expiredProducts = this.products.filter( product => product.state === false);
+        const expiredProducts = this.products.filter( product => product.expired === true);
         return expiredProducts;
     }
 }
