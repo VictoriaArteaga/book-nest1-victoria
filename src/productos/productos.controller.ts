@@ -124,4 +124,11 @@ export class ProductosController {
         const expiredProducts = this.products.filter( product => product.state === false);
         return expiredProducts;
     }
+
+    // E. Listar los productos por categoría.
+    @Get("search/category/:category")
+    getProductsByCategory(@Param("category") category: string) {
+        const productsByCategory = this.products.filter(product => product.category.toLowerCase() === category.toLowerCase());
+        return productsByCategory;
+    }
 }
