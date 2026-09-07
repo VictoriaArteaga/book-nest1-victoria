@@ -25,7 +25,7 @@ export class ProductosController {
         { 
             id: "2", 
             name: "Zanahoria",
-            expired: false,
+            expired: true, 
             category: "Verduras", 
             stock: 50,
             price: 35.50
@@ -33,7 +33,7 @@ export class ProductosController {
         { 
             id: "3", 
             name: "Carne de res",
-            expired: true, 
+            expired: false, 
             category: "Carnes", 
             stock: 0,
             price: 89.99
@@ -41,7 +41,7 @@ export class ProductosController {
         { 
             id: "4", 
             name: "Laptop",
-            expired: false, 
+            expired: true, 
             category: "Electrónica", 
             stock: 12,
             price: 450.00 
