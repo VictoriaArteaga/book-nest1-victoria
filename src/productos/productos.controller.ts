@@ -108,6 +108,9 @@ export class ProductosController {
     getProduct(@Param("id") id: string) {
 
         const product = this.products.find(product => product.id === id);
+        if (product === undefined) {
+            return { message: "Producto no encontrado"};
+        }
         return product;
     }
 
