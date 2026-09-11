@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 
 interface Product {
     id: string;
@@ -25,7 +25,7 @@ export class ProductosController {
         { 
             id: "2", 
             name: "Zanahoria",
-            expired: true, 
+            expired: false,
             category: "Verduras", 
             stock: 50,
             price: 35.50
@@ -33,7 +33,7 @@ export class ProductosController {
         { 
             id: "3", 
             name: "Carne de res",
-            expired: false, 
+            expired: true, 
             category: "Carnes", 
             stock: 0,
             price: 89.99
@@ -41,7 +41,7 @@ export class ProductosController {
         { 
             id: "4", 
             name: "Laptop",
-            expired: true, 
+            expired: false, 
             category: "Electrónica", 
             stock: 12,
             price: 450.00 
@@ -134,4 +134,68 @@ export class ProductosController {
         const productsByCategory = this.products.filter(product => product.category.toLowerCase() === category.toLowerCase());
         return productsByCategory;
     }
+
+    // ---- SEGUNDA CLASE DE NEST. ---- //
+
+    // D. Crear un producto.
+    @Post()
+    createProduct(@Body() newProduct: Product) {
+
+        const existingProduct = this.products.find((product) => product.id === newProduct.id || product.name === newProduct.name);
+
+        if (existingProduct) {
+            return {
+                message: "El producto con ese ID ya existe."
+            };
+        }
+
+        this.products.push(newProduct);
+        return {
+            message: "Productos creado exitosamente.",
+            data: newProduct
+        }
+    }
+
+    // E. Eliminar Producto
+    @Delete("/:id") 
+    deleteProduct(@Param("id") id: string) {
+
+        const position = this.products.findIndex(product => product.id === id);
+
+        if (position === -1) {
+            return {
+                message: "El producto con ese ID no existe."
+            }
+        }
+
+        this.products.splice(position, 1);
+        return {
+            message: "Producto eliminado con exito."
+        }
+    }
+
+    // F. Actualizar producto.
+    @Put(":id")
+    updateProducts(@Param("id") id: string, @Body() productChanges: Product) {
+
+        const productIndex = this.products.findIndex((product) => id === product.id)
+
+        if (productIndex === -1) {
+            return {
+                message: "El producto con ese ID no existe."
+            }
+        }
+
+        const existingProduct = this.products[productIndex]
+        const updateProduct = {...existingProduct, ...productChanges}
+
+        this.products[productIndex] = updateProduct
+
+        return {
+            message: "Producto actualizado con exito.",
+            data: updateProduct
+        }
+    
+    }
+
 }
